@@ -1,4 +1,9 @@
-const Header = ({ username }) => {
+import useGetUserData from "../../customHooks/useGetUserData";
+
+const Header = () => {
+    const loggedInUser =useGetUserData();
+
+    
     return (
         <header className="bg-gray-900 text-white p-4">
             <div className="max-w-7xl mx-auto flex justify-between items-center">
@@ -10,8 +15,8 @@ const Header = ({ username }) => {
                         <li><a href="#contact" className="hover:underline">Contact</a></li>
                     </ul>
                 </nav>
-                {username ?
-                    <div className="text-lg font-bold">{username}</div> 
+                {loggedInUser ?
+                    <div className="text-lg font-bold">{loggedInUser?.name}</div> 
                 :
                     <button className="bg-white text-gray-900 px-4 py-2 rounded">Sign In</button>
                 }

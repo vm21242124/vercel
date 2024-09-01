@@ -11,18 +11,19 @@ import LoginPage from './ui/LoginPage/LoginPage.jsx';
 import Dashboard from './ui/UserDashboard/Dashboard.jsx';
 import { Provider } from 'react-redux';
 import store from './redux/store.js';
-const router=createBrowserRouter([
+import { UserSectionProvider } from './ui/UserDashboard/UserContext.jsx';
+const router = createBrowserRouter([
   {
-    path:'/',
-    element:<Dashboard/>
+    path: '/',
+    element: <Dashboard />
   },
   {
-    path:"/login",
-    element:<LoginPage/>
+    path: "/login",
+    element: <LoginPage />
   },
   {
-    path:"/dashboard",
-    element:<LandingPage/>
+    path: "/dashboard",
+    element: <LandingPage />
   }
 ])
 
@@ -30,8 +31,11 @@ const router=createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
+      <UserSectionProvider>
 
-    <RouterProvider router={router}/>
+        <RouterProvider router={router} />
+      </UserSectionProvider>
+
     </Provider>
   </StrictMode>,
 )
